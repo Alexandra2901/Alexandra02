@@ -26,7 +26,7 @@ function showError(inputId) {
  * @param  {String} inputId The id of the input we show the error
  */
 function hideError(inputId) {
-  
+
     var parentNode = findParent(document.querySelector(inputId), 'form-group');
     parentNode.className = parentNode.className.replace('has-error', '');
     parentNode.querySelector('.help-block').className = parentNode.querySelector('.help-block').className.replace('hidden', '');
@@ -69,7 +69,6 @@ function formValidationFunction(id, inputs) {
     });
 
 }
-
 function findParent(node, searchClass) {
     if (node == null) {
         return null;
