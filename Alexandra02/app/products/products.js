@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded',function (){
                  </a>
              </div>
          </div>
-     </div>`;
+     `;
   var location = document.querySelector('#product-list .row');
    for(var i=0;i<list.length;i++)
    {
