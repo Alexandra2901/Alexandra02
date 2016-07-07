@@ -1,0 +1,1 @@
+formValidationFunction('#login',['#username', '#password']);

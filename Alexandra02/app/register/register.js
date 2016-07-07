@@ -1,11 +1,17 @@
+
 document.addEventListener('DOMContentLoaded',function(){
+    //the dom has been loaded
+    //get a reference to our form
     var registerForm = document.querySelector('#register');
+    //a collection of input ids
     var inputs = ['#username','#email','#password','#confirm-password'];
+    //attach to each input an event listener so we can check for events
     for(var i=0;i<inputs.length;i++) {
       document.querySelector(inputs[i]).addEventListener("keyup",function() {
         onchangeElem('#' + this.id)
       })
     }
+    //listen to the submit event
     registerForm.addEventListener('submit', function(event){
         var hasError = false;
         for(var i=0;i<inputs.length;i++) {
@@ -16,29 +22,9 @@ document.addEventListener('DOMContentLoaded',function(){
             hideError(inputs[i])
           }
         }
-
+        //if at least one element had errors prevent default submit action
         if(hasError) {
           event.preventDefault();
         }
     })
 })
-
-function onchangeElem(inputId) {
-  isEmptyInput(inputId) ? showError(inputId) : hideError(inputId);
-}
-
-function showError(inputId) {
-  var parentNode =  document.querySelector(inputId).parentNode;
-  parentNode.className +=  ' has-error';
-  parentNode.querySelector('.help-block').className = parentNode.querySelector('.help-block').className.replace('hidden','');
-}
-function hideError(inputId) {
-  var parentNode =  document.querySelector(inputId).parentNode;
-  parentNode.className = parentNode.className.replace('has-error','');
-
-  parentNode.querySelector('.help-block').className = parentNode.querySelector('.help-block').className.replace('hidden','');
-  parentNode.querySelector('.help-block').className +=' hidden';
-}
-function isEmptyInput(inputId) {
-  return !document.querySelector(inputId).value
-}
